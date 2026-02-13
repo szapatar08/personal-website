@@ -87,12 +87,6 @@ const config: Config = {
           position: "left",
           label: "Repo",
         },
-        {
-          type: "docSidebar",
-          sidebarId: "javascript",
-          position: "left",
-          label: "JavaScript",
-        },
         { to: "/blog", label: "Blog", position: "right" },
         {
           href: "https://github.com/szapatar08",

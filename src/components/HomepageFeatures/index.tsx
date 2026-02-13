@@ -12,7 +12,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: "Easy to Learn, Always Improving",
-    Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
+    Svg: require("@site/static/img/first.svg").default,
     description: (
       <>
         I’m a software developer in constant training, focused on building
@@ -22,7 +22,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Focused on Logic & Problem Solving",
-    Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
+    Svg: require("@site/static/img/second.svg").default,
     description: (
       <>
         My approach to development is centered on problem-solving, clean logic,
@@ -32,7 +32,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: "Powered by Modern Technologies",
-    Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
+    Svg: require("@site/static/img/third.svg").default,
     description: (
       <>
         I work with modern web technologies like React and Node.js, and I’m

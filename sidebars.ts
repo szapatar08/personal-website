@@ -26,13 +26,5 @@ const sidebars: SidebarsConfig = {
       items: ["repo/html-css/html-intro"],
     },
   ],
-  javascript: [
-    {
-      type: "category",
-      label: "JavaScript",
-      items: ["javascript/intro"],
-    },
-  ],
 };
-
 export default sidebars;
