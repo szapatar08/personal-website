@@ -38,12 +38,6 @@
     background-color: var(--ifm-color-primary-darkest);
 }
 
-/* Footer */
-footer {
-    background-color: var(--ifm-color-primary);
-    color: var(--ifm-color-primary-lightest);
-}
-
 /* Media queries */
 @media (min-width: 996px) {
     /* Navbar Icons */

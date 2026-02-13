@@ -18,12 +18,17 @@ const sidebars: SidebarsConfig = {
     {
       type: "doc",
       id: "repo/intro",
-      label: "Repositories intro",
+      label: "Intro",
+    },
+    {
+      type: "category",
+      label: "Python",
+      items: ["repo/python/intro"],
     },
     {
       type: "category",
       label: "HTML/CSS",
-      items: ["repo/html-css/html-intro"],
+      items: ["repo/html-css/intro"],
     },
   ],
 };

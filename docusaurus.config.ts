@@ -31,7 +31,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/szapatar08/personal-website",
         },
         blog: {
           showReadingTime: true,
@@ -39,7 +38,6 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          editUrl: "https://github.com/szapatar08/personal-website",
           // Useful options to enforce blogging best practices
           onInlineTags: "warn",
           onInlineAuthors: "warn",
@@ -69,7 +67,7 @@ const config: Config = {
           type: "docSidebar",
           sidebarId: "repo",
           position: "left",
-          label: "Repo",
+          label: "Repository",
         },
         { to: "/blog", label: "Blog", position: "right" },
         {
