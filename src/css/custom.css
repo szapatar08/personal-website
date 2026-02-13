@@ -1,3 +1,4 @@
+/* Root colors */
 /* Light mode */
 :root {
     --ifm-color-primary: #334155;
@@ -27,6 +28,7 @@
     --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
 }
 
+/* Index btn */
 .button {
     background-color: var(--ifm-color-primary-light);
     color: #fff;
@@ -36,7 +38,15 @@
     background-color: var(--ifm-color-primary-darkest);
 }
 
+/* Footer */
+footer {
+    background-color: var(--ifm-color-primary);
+    color: var(--ifm-color-primary-lightest);
+}
+
+/* Media queries */
 @media (min-width: 996px) {
+    /* Navbar Icons */
     .nav-icon {
         width: 30px;
         height: 30px;
