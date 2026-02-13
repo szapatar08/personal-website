@@ -1,8 +1,8 @@
 ---
-slug: first-blog-post
-title: First Blog Post
-authors: [slorber, yangshun]
-tags: [hola, docusaurus]
+slug: SQL Queries
+title: SQL Queries
+authors: santiago
+tags: [sql]  
 ---
 
 Lorem ipsum dolor sit amet...
