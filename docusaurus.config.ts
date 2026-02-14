@@ -6,7 +6,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "Santiago Zapata",
-  tagline: "Take it easy, a good coder always is gonna make it easy.",
+  tagline: "Take it easy. A good coder always is gonna make it easy.",
   favicon: "img/logo.png",
 
   future: {
@@ -22,7 +22,15 @@ const config: Config = {
 
   i18n: {
     defaultLocale: "en",
-    locales: ["en"],
+    locales: ["en", "es"],
+    localeConfigs: {
+      en: {
+        htmlLang: "en",
+      },
+      es: {
+        htmlLang: "es",
+      },
+    },
   },
 
   presets: [
@@ -83,6 +91,10 @@ const config: Config = {
           position: "right",
           className: "nav-github nav-icon",
           "aria-label": "GitHub repository",
+        },
+        {
+          type: "localeDropdown",
+          position: "right",
         },
       ],
     },
