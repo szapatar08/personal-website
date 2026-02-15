@@ -108,6 +108,12 @@ const config: Config = {
           position: "left",
           label: "Repository",
         },
+        {
+          type: "docSidebar",
+          sidebarId: "activities",
+          position: "left",
+          label: "Activities",
+        },
         { to: "/blog", label: "Blog", position: "right" },
         {
           href: "https://www.linkedin.com/in/szapatar/",
