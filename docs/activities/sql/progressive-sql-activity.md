@@ -1,6 +1,6 @@
 ---
 id: progressive-sql-activity
 title: Progressive SQL Activity — Leveling Up
-description: This section contains coding activities written in multiple programming languages, along with their solutions for learning and reference.
+description: SQL challenge designed to strengthen your database skills, guiding you from basic queries to more advanced concepts through practical, hands-on exercises.
 ---
 # Progressive SQL Activity — Leveling Up

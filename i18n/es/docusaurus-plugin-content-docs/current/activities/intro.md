@@ -1,6 +1,6 @@
 ---
 id: intro-activities
-title: Intro to Activities
+title: Introducción a las actividades
 description: Esta sección contiene actividades de programación escritas en varios lenguajes, junto con sus soluciones, para el aprendizaje y como referencia.
 ---
 # Introducción a las actividades
