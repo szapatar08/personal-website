@@ -20,37 +20,26 @@ const sidebars: SidebarsConfig = {
       id: "repo/intro",
       label: "Intro",
     },
-    {
-      type: "category",
-      link: {
-        type: "generated-index",
-        title: "Python Projects Guides",
-        description: "See all my projects made with python!",
-        slug: "/category/python",
-        keywords: ["python"],
-      },
-      label: "Python",
-      items: ["repo/python/intro"],
-    },
-    {
-      type: "category",
-      link: {
-        type: "generated-index",
-        title: "HTML/CSS Projects Guides",
-        description: "See all my projects made with HTML/CSS only!",
-        slug: "/category/html-css",
-        keywords: ["html", "css"],
-      },
-      label: "HTML/CSS",
-      items: ["repo/html-css/intro"],
-    },
   ],
 
   activities: [
     {
       type: "doc",
-      id: "activities/intro",
+      id: "activities/intro-activities",
       label: "Intro",
+    },
+    {
+      type: "category",
+      link: {
+        type: "generated-index",
+        title: "SQL practice activities",
+        description:
+          "SQL (Structured Query Language) is a standard language used to store, retrieve, and manage data in relational databases.",
+        slug: "/category/activities-sql",
+        keywords: ["SQL", "Structured Query Language", "data", "databases"],
+      },
+      label: "SQL",
+      items: ["activities/sql/progressive-sql-activity"],
     },
   ],
 };
