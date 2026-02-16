@@ -32,7 +32,16 @@
     width: 1920px;
 }
 
-a {
+main a {
+    text-decoration: underline;
+}
+
+.table-of-contents__link {
+    text-decoration: none;
+}
+
+main a:hover,
+main a:focus {
     font-weight: bold;
 }
 

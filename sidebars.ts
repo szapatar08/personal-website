@@ -1,17 +1,5 @@
 import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
-/**
- * Creating a sidebar enables you to:
- - create an ordered group of docs
- - render a sidebar for each doc of that group
- - provide next/previous navigation
-
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
- */
 const sidebars: SidebarsConfig = {
   // Repository side bar
   repo: [
@@ -32,7 +20,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       link: {
         type: "generated-index",
-        title: "SQL practice activities",
+        title: "SQL Practice Activities",
         description:
           "SQL (Structured Query Language) is a standard language used to store, retrieve, and manage data in relational databases.",
         slug: "/category/activities-sql",
@@ -40,6 +28,25 @@ const sidebars: SidebarsConfig = {
       },
       label: "SQL",
       items: ["activities/sql/progressive-sql-activity"],
+    },
+    {
+      type: "category",
+      link: {
+        type: "generated-index",
+        title: "SQL Practice Activities Solutions",
+        description:
+          "SQL (Structured Query Language) is a standard language used to store, retrieve, and manage data in relational databases.",
+        slug: "/category/activities-sql-solutions",
+        keywords: [
+          "SQL",
+          "Structured Query Language",
+          "data",
+          "databases",
+          "solutions",
+        ],
+      },
+      label: "SQL Solutions",
+      items: ["activities/solutions/sql/progressive-sql-activity-solutions"],
     },
   ],
 };
