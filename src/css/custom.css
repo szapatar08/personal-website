@@ -36,7 +36,9 @@ main a {
     text-decoration: underline;
 }
 
-.table-of-contents__link {
+.table-of-contents__link,
+.cardContainer_fWXF,
+.pagination-nav__link {
     text-decoration: none;
 }
 

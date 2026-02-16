@@ -21,13 +21,117 @@ Está aprendiendo a pensar en datos.
 # Nivel 1 — Fundamentos (Exploración básica)
 
 1. Listar todos los usuarios.
-2. Mostrar solo `first_name`, `last_name`, `email`.
+    <details>
+      <summary>Verificar si estoy en lo correcto</summary>
+      
+      En este ejercicio, necesitamos seleccionar todos los datos de la tabla en la base de datos que creamos. En este caso, la tabla se llama `users`.\
+      En SQL del mundo real, esta solución no difiere mucho de lo que verás en la práctica. El concepto clave aquí es que el operador `*` significa todas las columnas.
+      
+      Con esto en mente, aquí está la solución:
+      
+      ```sql
+      SELECT * FROM users
+      ```
+      </details>
+2. Mostrar solo `first_name`, `last_name` y `email`.
+    <details>
+      <summary>Revelar la verdad</summary>
+      
+      En este ejercicio, continuamos con la misma lógica del anterior. El único cambio son las columnas seleccionadas.\
+      En lugar de seleccionar todas las columnas (`*`), ahora solo necesitamos obtener `first_name`, `last_name` y `email`.
+      
+      Con esto en mente, aquí está la solución:
+      
+      ```sql
+      SELECT first_name, last_name, email FROM users
+      ```
+    </details>
 3. Filtrar usuarios cuyo `role` sea `'admin'`.
+    <details>
+      <summary>Muéstrame la magia</summary>
+      
+      En este ejercicio, introducimos otro concepto de SQL llamado `WHERE`.\
+      Esta es una sentencia condicional que filtra los datos: solo se mostrarán las filas que cumplan con la condición dada:
+  
+      ```sql
+      SELECT * FROM users WHERE role = 'admin'
+      ```
+    </details>
 4. Filtrar usuarios con `document_type = 'CC'`.
-5. Mostrar usuarios mayores de 18 años (calcular edad desde `birth_date`).
+    <details>
+      <summary>Momento de la verdad</summary>
+      
+      Este sigue el ejercicio anterior, pero ahora no estamos preguntando por el `role`.\
+      En su lugar, estamos buscando el `document_type`:
+
+      ```sql
+      SELECT * FROM users WHERE document_type = 'CC'
+      ```
+    </details>
+5. Mostrar usuarios mayores de 18 años (calcular la edad desde `birth_date`).
+    <details>
+      <summary>¿Lo hice bien?</summary>
+      
+      Para resolver este reto, necesitamos introducir la función `TIMESTAMPDIFF()`.\
+      En MySQL, `TIMESTAMPDIFF()` es una función poderosa que se utiliza para calcular la diferencia entre dos valores `DATE` o `DATETIME`.
+
+      En este caso, convertimos `birth_date` a años comparándolo con la fecha actual, y luego verificamos si el usuario es mayor de 18 años.
+
+      El ejercicio podría verse así:
+
+      ```sql
+      SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 18
+      ```
+
+      Más información sobre `TIMESTAMPDIFF()` [aquí](https://www.w3resource.com/mysql/date-and-time-functions/mysql-timestampdiff-function.php)
+    </details>
 6. Mostrar usuarios cuyo ingreso sea mayor a 5,000,000.
-7. Mostrar usuarios cuyo nombre empiece por "A".
+    <details>
+      <summary>Haz clic para spoilers</summary>
+      
+      Siguiendo la misma lógica del ejercicio anterior, podemos usar el símbolo `>` (mayor que).\
+      Debemos asegurarnos de que `monthly_income` sea mayor que `5000000`.
+
+      Con esto en mente, aquí está la solución:
+
+      ```sql
+      SELECT * FROM users WHERE monthly_income > 5000000	    
+      ```
+    </details>
+7. Mostrar usuarios cuyo nombre comience con "A".
+    <details>
+      <summary>Veamos…</summary>
+      
+      Para resolver este ejercicio, debo presentarte un nuevo concepto llamado el operador `LIKE`.\
+      El operador `LIKE` se utiliza en una cláusula `WHERE` para buscar un patrón específico en una columna.\
+      Para devolver registros que comiencen con una letra o frase específica, se agrega el `%` al final de la letra o frase.
+
+      El ejercicio podría verse así:
+
+      ```sql
+      SELECT * FROM users WHERE first_name like 'a%'	    
+      ```
+      
+      Más información sobre el operador `LIKE` [aquí](https://www.w3schools.com/sql/sql_like.asp#gsc.tab=0)
+    </details>
 8. Mostrar usuarios que no tengan `company`.
+    <details>
+      <summary>Clic arriesgado</summary>
+      
+      Para resolver este reto, primero debemos entender que un usuario sin empresa tiene `company = NULL`.
+
+      Para esto, introducimos un nuevo concepto de SQL: el operador `IS`.\
+      El operador `IS` se utiliza para comparar un valor con `NULL` o con valores booleanos (`TRUE`, `FALSE`). Es especialmente importante porque `NULL` no se puede comparar usando el operador `=`.
+
+      Con esto en mente, aquí está la solución:
+
+      ```sql
+      SELECT * FROM users WHERE company IS NULL    
+      ```
+      
+      Más información sobre el operador `IS` [aquí](https://www.sqlhabit.com/mdn/is)
+    </details>
+
 
 > Aquí ya aprendiste SELECT, WHERE, operadores lógicos y NULL.
 
