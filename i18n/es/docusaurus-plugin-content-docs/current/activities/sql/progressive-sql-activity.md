@@ -140,12 +140,98 @@ Está aprendiendo a pensar en datos.
 # Nivel 2 — Combinación de condiciones
 
 9. Usuarios mayores de 25 años que sean `'employee'`.
+    <details>
+      <summary>Respuesta, por favor</summary>
+      
+      En este ejercicio introducimos algunos nuevos operadores de SQL. El primero es `AND`.
+      
+      El operador `AND` es un operador lógico que devuelve `TRUE` solo si **ambas** condiciones son `TRUE`.  
+      En este caso, la condición será `TRUE` si el usuario es mayor de 25 años **y** tiene empleo.
+      
+      Otro concepto importante es el operador `NOT`.  
+      El operador `NOT` también es un operador lógico que devuelve `TRUE` cuando una condición **no** se cumple.  
+      En este caso, si `company` **no** es `NULL`, la condición devolverá `TRUE`.
+      
+      Con esto en mente, aquí está la solución:
+
+      ```sql
+      SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 25 AND company IS NOT NULL   
+      ```
+      
+      Más información sobre el operador `AND` [aquí](https://www.w3schools.com/sql/sql_and.asp).\
+      Más información sobre el operador `NOT` [aquí](https://www.w3schools.com/sql/sql_not.asp).
+    </details>
 10. Usuarios con `'CC'` que estén activos.
+    <details>
+      <summary>¿Soy un genio?</summary>
+      
+      Siguiendo el ejercicio anterior, solo necesitamos verificar que `document_type` = `'CC'` **y** `is_active` = `1`:
+
+      ```sql
+      SELECT * FROM users WHERE document_type = 'CC' AND is_active = 1   
+      ```
+    </details>
 11. Usuarios mayores de edad sin empleo.
+    <details>
+      <summary>¿O no…?</summary>
+      
+      Este ejercicio es similar al ejercicio 9, pero filtra usuarios mayores de 18 años, que es la mayoría de edad en mi país.
+
+      ```sql
+      SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 17 AND company IS NULL  
+      ```
+    </details>  
 12. Usuarios con empleo y con ingresos mayores a 3,000,000.
+    <details>
+      <summary>Hora de confesar</summary>
+      
+      Primero, verificamos que el usuario tenga empleo.\
+      Esto significa que la columna `company` no debe ser `NULL`.
+      
+      Luego, filtramos los usuarios cuyo ingreso sea mayor a 3,000,000 usando el operador de comparación `>`.\
+      Ambas condiciones deben cumplirse para que el usuario aparezca en el resultado.
+      
+      Teniendo esto en cuenta, aquí está la solución:
+
+      ```sql
+      SELECT * FROM users WHERE company IS NOT NULL AND monthly_income > 3000000  
+      ```
+    </details>  
 13. Usuarios casados con al menos 1 hijo.
+    <details>
+      <summary>Mostrar la respuesta</summary>
+          
+      Primero, verificamos el estado civil comparando la columna `marital_status` con el valor `'Casado'`.\
+      Luego, nos aseguramos de que el usuario tenga al menos un hijo comprobando que `children_count` sea mayor o igual a `1`.
+      
+      Ambas condiciones deben cumplirse para que el usuario sea incluido en el resultado.
+
+      ```sql
+      SELECT * FROM users WHERE marital_status = 'Casado' AND children_count >= 1  
+      ```
+    </details>
 14. Usuarios entre 30 y 40 años.
+    <details>
+      <summary>Prueba o dolor</summary>
+          
+      En este caso, primero verificamos que la edad del usuario sea mayor o igual a 30 y menor o igual a 40.\
+      Esto hace que el resultado esté entre los 30 y 40 años.
+
+      ```sql
+      SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) >= 30 AND TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) <= 40 
+      ```
+    </details>
 15. Usuarios `'admin'` verificados mayores de 25 años.
+    <details>
+      <summary>Júzgame</summary>
+            
+      Primero debemos asegurarnos de que el rol del usuario sea `admin` y que sea mayor de 25 años.
+
+      ```sql
+      SELECT * FROM users WHERE role = 'admin' AND TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 25 
+      ```
+    </details>
+
 
 > Aquí combinamos múltiples condiciones y lógica booleana.
 
