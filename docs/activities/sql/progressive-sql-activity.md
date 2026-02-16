@@ -6,7 +6,7 @@ description: SQL challenge designed to strengthen your database skills, guiding 
 # Progressive SQL Activity — Leveling Up
 > This activity was made by [Robinson Andres Cortes](https://github.com/andrescortesdev/)
 
-In this activity, you’ll explore SQL queries through a set of research-based exercises. Try to complete the activity using only [W3Schools](https://www.w3schools.com/)
+In this activity, you’ll explore SQL queries through a set of research-based exercises. Try to complete the activity using only [W3Schools](https://www.w3schools.com/), [w3resource](https://www.w3resource.com/mysql/mysql-tutorials.php) or [SQLhabit](https://www.sqlhabit.com/mdn)
  as a reference.
 
 Copy and paste the provided [code](../../assets/progressive-sql-activity/script) into your preferred SQL DBMS. While the exercises work with any SQL engine, the example solution uses MySQL.

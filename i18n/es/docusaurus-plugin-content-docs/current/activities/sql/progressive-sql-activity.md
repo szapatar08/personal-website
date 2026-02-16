@@ -6,7 +6,7 @@ description: Desafío de SQL diseñado para fortalecer tus habilidades en bases 
 # Actividad Progresiva SQL — Subiendo de Nivel
 > Esta actividad fue creada por [Robinson Andres Cortes](https://github.com/andrescortesdev/)
 
-En esta actividad explorarás consultas SQL a través de un conjunto de ejercicios de investigación. Intenta completar la actividad usando únicamente [W3Schools](https://www.w3schools.com/) como referencia.
+En esta actividad explorarás consultas SQL a través de un conjunto de ejercicios de investigación. Intenta completar la actividad usando únicamente [W3Schools](https://www.w3schools.com/), [w3resource](https://www.w3resource.com/mysql/mysql-tutorials.php) o [SQLhabit](https://www.sqlhabit.com/mdn) como referencia.
 
 Copia y pega el [código proporcionado](../../assets/progressive-sql-activity/script) en tu DBMS de SQL preferido. Aunque los ejercicios funcionan con cualquier motor SQL, la solución de ejemplo utiliza MySQL.
 
