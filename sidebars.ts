@@ -29,25 +29,6 @@ const sidebars: SidebarsConfig = {
       label: "SQL",
       items: ["activities/sql/progressive-sql-activity"],
     },
-    {
-      type: "category",
-      link: {
-        type: "generated-index",
-        title: "SQL Practice Activities Solutions",
-        description:
-          "SQL (Structured Query Language) is a standard language used to store, retrieve, and manage data in relational databases.",
-        slug: "/category/activities-sql-solutions",
-        keywords: [
-          "SQL",
-          "Structured Query Language",
-          "data",
-          "databases",
-          "solutions",
-        ],
-      },
-      label: "SQL Solutions",
-      items: ["activities/solutions/sql/progressive-sql-activity-solutions"],
-    },
   ],
 };
 export default sidebars;

@@ -21,13 +21,116 @@ they are learning to think in data.
 ## Level 1 — Fundamentals (Basic Exploration)
 
 1. List all users.
+    <details>
+      <summary>Check if I’m right</summary>
+      
+      In this exercise, we need to select all the data from the table in the database we created. In this case, the table is called `users`.\
+      In real-world SQL, this solution does not differ much from what you’ll see in practice. The key concept here is that the `*` operator means all columns.
+      
+      With that in mind, here is the solution:
+      
+      ```sql
+      SELECT * FROM users
+      ```
+      </details>
 2. Show only `first_name`, `last_name`, and `email`.
+    <details>
+      <summary>Reveal the truth</summary>
+      
+      In this exercise, we continue with the same logic as the previous one. The only change is the selected columns.\
+      Instead of selecting all columns (`*`), we now only need to retrieve `first_name`, `last_name`, and `email`.
+      
+      With that in mind, here is the solution:
+      
+      ```sql
+      SELECT first_name, last_name, email FROM users
+      ```
+    </details>
 3. Filter users whose `role` is `'admin'`.
+    <details>
+      <summary>Show me the magic</summary>
+      
+      In this exercise, we introduce another SQL concept called `WHERE`.\
+      This is a conditional statement that filters data: only rows that match the given condition will be shown:
+  
+      ```sql
+      SELECT * FROM users WHERE role = 'admin'
+      ```
+    </details>
 4. Filter users with `document_type = 'CC'`.
+    <details>
+      <summary>Moment of truth</summary>
+      
+      This one follows the last exercise, now we are not asking for the `role`.\
+      Instead we are searching for the `document_type`:
+
+      ```sql
+      SELECT * FROM users WHERE document_type = 'CC'
+      ```
+    </details>
 5. Show users older than 18 years (calculate age from `birth_date`).
+    <details>
+      <summary>Did I nail it?</summary>
+      
+      To solve this challenge, we need to introduce the `TIMESTAMPDIFF()` function.\
+      In MySQL, `TIMESTAMPDIFF()` is a powerful function used to calculate the difference between two `DATE` or `DATETIME` values.
+
+      In this case we convert the `birth_date` into years by comparing it with current date, and the check whether the user is older than 18 years.
+
+      The exercise might look like this:
+
+      ```sql
+      SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 18
+      ```
+
+      More information about `TIMESTAMPDIFF()` in [here](https://www.w3resource.com/mysql/date-and-time-functions/mysql-timestampdiff-function.php)
+    </details>
 6. Show users whose income is greater than 5,000,000.
+    <details>
+      <summary>Click for spoilers</summary>
+      
+      Following the same login in the last exercise, we can use `>` greater than symbol.\
+      We have to make sure that `monthly_income` is grater than `5000000`.
+
+      With that in mind, here is the solution:
+
+      ```sql
+      SELECT * FROM users WHERE monthly_income > 5000000	    
+      ```
+    </details>
 7. Show users whose name starts with "A".
+    <details>
+      <summary>Let’s see…</summary>
+      
+      In order to solve this exercise, I have to introduce you to a new concept call `LIKE operator`.\
+      The `LIKE` operator is used in a `WHERE` clause to search for a specified pattern in a column.\
+      To return records that starts with a specific letter or phrase, add the `%` at the end of the letter or phrase.
+
+      The exercise might look like this:
+
+      ```sql
+      SELECT * FROM users WHERE first_name like 'a%'	    
+      ```
+      
+      More information about `LIKE operator` in [here](https://www.w3schools.com/sql/sql_like.asp#gsc.tab=0)
+    </details>
 8. Show users who do not have a `company`.
+    <details>
+      <summary>Risky click</summary>
+      
+      To solve this challenge, we first need to understand that a user without a company has `company = ǸULL`.
+
+      For this, we introduce a new SQL concept: the `IS` operator.\
+      The `IS` operator is used to compare a value with `NULL` or with boolean values (`TRUE`, `FALSE`). It is especially important because `NULL` cannot be compared using the `=` operator..
+
+      With that in mind, here is the solution:
+
+      ```sql
+      SELECT * FROM users WHERE company IS NULL    
+      ```
+      
+      More information about `IS operator` in [here](https://www.sqlhabit.com/mdn/is)
+    </details>
 
 > Here you already learned SELECT, WHERE, logical operators, and NULL.
 
