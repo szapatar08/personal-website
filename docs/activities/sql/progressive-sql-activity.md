@@ -83,7 +83,7 @@ they are learning to think in data.
       SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 18
       ```
 
-      More information about `TIMESTAMPDIFF()` in [here](https://www.w3resource.com/mysql/date-and-time-functions/mysql-timestampdiff-function.php)
+      More information about `TIMESTAMPDIFF()` in [here](https://www.w3resource.com/mysql/date-and-time-functions/mysql-timestampdiff-function.php).
     </details>
 6. Show users whose income is greater than 5,000,000.
     <details>
@@ -112,7 +112,7 @@ they are learning to think in data.
       SELECT * FROM users WHERE first_name like 'a%'	    
       ```
       
-      More information about `LIKE operator` in [here](https://www.w3schools.com/sql/sql_like.asp#gsc.tab=0)
+      More information about `LIKE operator` in [here](https://www.w3schools.com/sql/sql_like.asp#gsc.tab=0).
     </details>
 8. Show users who do not have a `company`.
     <details>
@@ -129,7 +129,7 @@ they are learning to think in data.
       SELECT * FROM users WHERE company IS NULL    
       ```
       
-      More information about `IS operator` in [here](https://www.sqlhabit.com/mdn/is)
+      More information about `IS operator` in [here](https://www.sqlhabit.com/mdn/is).
     </details>
 
 > Here you already learned SELECT, WHERE, logical operators, and NULL.
@@ -139,12 +139,97 @@ they are learning to think in data.
 ## Level 2 — Combining Conditions
 
 9. Users older than 25 years who are `'employee'`.
+    <details>
+      <summary>Answer, please</summary>
+      
+      In this exercise, we introduce some new SQL operators. The first one is `AND`.
+      
+      The `AND` operator is a logical operator that returns `TRUE` only if **both** conditions are `TRUE`.  
+      In this case, the condition will return `TRUE` if the user is older than 25 **and** is an employee.
+      
+      Another important concept is the `NOT` operator.  
+      The `NOT` operator is also a logical operator that returns `TRUE` when a condition is **not** met.  
+      In this case, if `company` is **not** `NULL`, the condition will return `TRUE`.
+      
+      With that in mind, here is the solution:
+
+      ```sql
+      SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 25 AND company IS NOT NULL   
+      ```
+      
+      More information about the `AND operator` in [here](https://www.w3schools.com/sql/sql_and.asp).\
+      More information about the `NOT operator` in [here](https://www.w3schools.com/sql/sql_not.asp).
+    </details>
 10. Users with `'CC'` who are active.
+    <details>
+      <summary>Am I a genius?</summary>
+      
+      Following the last exercise we only need to check if the `document_type` = `'CC'` **and** `is_active` = `1`:
+
+      ```sql
+      SELECT * FROM users WHERE document_type = 'CC' AND is_active = 1   
+      ```
+    </details>
 11. Users of legal age without employment.
+    <details>
+      <summary>Or… not?</summary>
+      
+      This exercise is the same as Exercise 9, but it filters users who are over 18 years old, which is the legal age in my country.
+
+      ```sql
+      SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 17 and company IS NULL  
+      ```
+    </details>  
 12. Users with a job and income greater than 3,000,000.
+    <details>
+      <summary>Time to confess</summary>
+      
+      First, we check that the user has a job.\
+      This means the company column must not be NULL.
+      
+      Then, we filter users whose income is greater than 3,000,000 using the `>` comparison operator.\
+      Both conditions must be true for a user to appear in the result.
+      
+      Taking that into count, here is the solution:
+
+      ```sql
+      SELECT * FROM users WHERE company IS NOT NULL AND monthly_income > 3000000  
+      ```
+    </details>  
 13. Married users with at least 1 child.
+    <details>
+      <summary>Show the answer</summary>
+          
+      First, we check the marital status by comparing the `marital_status` column with the value `'Casado'`.\
+      Then, we make sure the user has at least one child by checking that `children_count` is greater than or equal to `1`.
+      
+      Both conditions must be true for the user to be included in the result.
+
+      ```sql
+      SELECT * FROM users WHERE marital_status = 'Casado' AND children_count >= 1  
+      ```
+    </details>
 14. Users between 30 and 40 years old.
+    <details>
+      <summary>Proof or pain</summary>
+          
+      In this one we first check that the age of the user is equal or more than 30 and equal or less than 40.\
+      This makes the result to be between 30 and 40.
+
+      ```sql
+      SELECT * FROM users WHERE TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) >= 30 AND TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) <= 40 
+      ```
+    </details>
 15. Verified `'admin'` users older than 25 years.
+    <details>
+      <summary>Judge me</summary>
+            
+      We need first make sure that the role of the user is `admin` and he is older that 25.
+
+      ```sql
+      SELECT * FROM users WHERE role = 'admin' AND TIMESTAMPDIFF(YEAR, birth_date , CURDATE()) > 25 
+      ```
+    </details>
 
 > Here we combine multiple conditions and boolean logic.
 
