@@ -332,10 +332,94 @@ Está aprendiendo a pensar en datos.
 # Nivel 4 — Pensamiento analítico
 
 21. Mostrar profesiones con más de 10 personas.
+    <details>
+      <summary>¿Estuve cerca?</summary>
+
+      En este ejercicio reunimos varios conceptos. Primero, introducimos un nuevo tema de SQL llamado `HAVING`.
+      
+      La cláusula `HAVING` funciona de manera similar a `WHERE`, pero con una diferencia importante:  
+      la cláusula `WHERE` no puede usarse con funciones de agregación, mientras que `HAVING` sí.
+      
+      Nuestro objetivo es mostrar todas las profesiones de los usuarios, contar cuántos usuarios pertenecen a cada profesión, asignar un alias a ese conteo, agrupar los resultados por profesión y finalmente filtrar aquellas profesiones que tengan **más de 10 usuarios**.
+      
+      Con esto en mente, aquí está la solución:
+
+      ```sql
+      SELECT profession, COUNT(*) AS profession_count FROM users GROUP BY profession HAVING profession_count > 10
+      ```
+
+      Más información sobre `HAVING` [aquí](https://www.w3schools.com/sql/sql_having.asp).
+    </details>
 22. Mostrar la ciudad con más usuarios.
-23. Comparar cantidad de menores vs mayores de edad.
-24. Promedio de ingresos por ciudad ordenado de mayor a menor.
+      <details>
+        <summary>Respuesta desbloqueada</summary>
+        
+        En esta sección empieza lo divertido, porque ahora debemos usar algunos conceptos que son realmente útiles en el campo.
+  
+        El primer concepto que veremos se llama la palabra clave `ORDER BY`. Esta palabra clave se utiliza para ordenar los elementos de una forma específica, ya sea ascendente (`ASC`) o descendente (`DESC`); en este caso vamos a usar `DESC`.
+  
+        Otra herramienta importante es `LIMIT`. Esta cláusula limita los resultados a la cantidad que especifiquemos; en este caso solo necesitamos el primer resultado.
+  
+        Teniendo todo esto en cuenta, esta es la solución:
+  
+        ```sql
+        SELECT city, COUNT(*) AS city_count FROM users GROUP BY city ORDER BY city_count DESC LIMIT 1
+        ```
+  
+        Más información sobre la palabra clave `ORDER BY` [aquí](https://www.w3schools.com/sql/sql_orderby.asp).\
+        Más información sobre `LIMIT` [aquí](https://www.w3schools.com/mysql/mysql_limit.asp).
+      </details>
+23. Comparar la cantidad de menores vs mayores de edad.
+    <details>
+      <summary>Sin trampas</summary>
+
+      Es momento de presentarles un nuevo concepto increíble: la función `SUM()`.\
+      La función `SUM()` devuelve la suma de una columna numérica. Si dentro de la función hay una expresión booleana y esta devuelve `TRUE`, entonces suma `1`.\
+      Si devuelve `FALSE`, entonces suma `0`.
+
+      En este caso se vería así:
+  
+      ```sql
+      SELECT
+          SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) > 17) AS adults,
+          SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 18) AS minors
+      FROM users
+      ```
+
+      Más información sobre la función `SUM()` [aquí](https://www.w3schools.com/sql/sql_sum.asp).
+    </details>
+24. Promedio de ingresos por ciudad, ordenado de mayor a menor.
+    <details>
+      <summary>Vamos a descubrirlo</summary>
+
+      Otro excelente ejercicio para practicar múltiples conceptos de SQL al mismo tiempo.
+      
+      En este ejercicio, primero calculamos el promedio de `monthly_income` para cada ciudad.  
+      Luego, redondeamos ese valor y le asignamos un alias.  
+      Después, agrupamos los resultados por ciudad y finalmente los ordenamos por `monthly_income` de forma descendente.
+      
+      Con todo esto en mente, aquí está la solución:
+
+      ```sql
+      SELECT city, ROUND(AVG(monthly_income )) AS income_city FROM users GROUP BY city ORDER BY income_city DESC
+      ```
+    </details>
 25. Mostrar las 5 personas con mayor ingreso.
+    <details>
+      <summary>Redoble de tambores…</summary>
+
+      Si has completado los ejercicios anteriores en orden, este debería ser extremadamente fácil.
+      
+      Primero, seleccionamos las columnas `first_name` y `monthly_income`.  
+      Luego, ordenamos los resultados por `monthly_income` de forma descendente y limitamos la salida a los primeros 5 registros.
+      
+      Con eso en mente, aquí está la solución:
+
+      ```sql
+      SELECT first_name, monthly_income FROM `users` ORDER BY monthly_income DESC LIMIT 5
+      ```
+    </details>
+
 
 > Aquí ya estás usando GROUP BY, ORDER BY, LIMIT y HAVING.
 
