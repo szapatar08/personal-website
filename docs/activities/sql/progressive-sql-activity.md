@@ -238,10 +238,89 @@ they are learning to think in data.
 ## Level 3 — Introduction to Analysis (Aggregations)
 
 16. Count users by `role`.
+    <details>
+      <summary>Reality check</summary>
+            
+      To start this section, we need to introduce some new concepts that will help us solve this challenge.
+      
+      The first concept is the `COUNT()` function.  
+      The `COUNT()` function is used to count the number of rows that match a specified condition.
+      
+      The second concept is the `GROUP BY` statement.  
+      It groups rows that have the same values into summary rows.
+      
+      The last concept is the `AS` keyword, which is used to rename a column or table using an alias.
+      
+      Enough theory — let’s put our hands on the keyboard.
+      
+      First, we need to `SELECT` the data we want to analyze. In this case, we select the `role` column and the number of times each role appears using `COUNT(role)`.  
+      Instead of showing the default column name `COUNT(role)`, we use the `AS` keyword to give it a more readable alias.
+      
+      Next, we specify the table where the data is stored, and finally we use `GROUP BY` to group the results by role.
+
+      ```sql
+      SELECT role, COUNT(role) AS Counting FROM users GROUP BY role 
+      ```
+
+      More information about the `COUNT() function` in [here](https://www.w3schools.com/sql/sql_count.asp).\
+      More information about the `GROUP BY statement` in [here](https://www.w3schools.com/sql/sql_groupby.asp#gsc.tab=0).\
+      More information about the `AS keyword` in [here](https://www.w3schools.com/sql/sql_ref_as.asp).
+    </details>
 17. Count users by `document_type`.
+    <details>
+      <summary>Don’t laugh</summary>
+            
+      This exercise is really similar to the last one. Instead we should use the `document_type` as the search field.
+
+      ```sql
+      SELECT document_type, COUNT(document_type) AS Counting FROM users GROUP BY document_type 
+      ```
+    </details>
 18. Count how many users are unemployed.
+    <details>
+      <summary>Be gentle</summary>
+            
+      In this case we take the `'Unemployed'` as a fixed value and `COUNT(*)` for all the users in the `users` table.\
+      Then we only take the users `WHERE` its `company IS NULL`, that means they are unemployed.
+
+      ```sql
+      SELECT 'Unemployed', COUNT(*) AS Counting FROM users WHERE company is NULL 
+      ```
+    </details>
 19. Calculate the overall average income.
+    <details>
+      <summary>Click wisely</summary>
+            
+      For this exercise, we need to introduce a couple of new SQL concepts.
+      
+      The first one is the `AVG()` function.  
+      The `AVG()` function returns the average value of a numeric column.
+      
+      The second and final concept in this section is the `ROUND()` function.  
+      The `ROUND()` function rounds a number to a specified number of decimal places.
+      
+      In this case, we want to calculate the average monthly income for all users.  
+      We use the `AVG()` function to get the average value and the `ROUND()` function to round the result to **0 decimal places**.
+      
+      This is the final result:
+
+      ```sql
+      SELECT 'Average Income', ROUND(AVG(monthly_income ), 0) FROM users
+      ```
+
+      More information about the `AVG() function` in [here](https://www.w3schools.com/sql/sql_avg.asp).\
+      More information about the `ROUND() function` in [here](https://www.w3schools.com/sql/func_sqlserver_round.asp).
+    </details>
 20. Calculate the average income by `role`.
+    <details>
+      <summary>The big reveal</summary>
+            
+      This exercise is really similar to the last one, but in this case we `GROUP BY role` the results.
+
+      ```sql
+      SELECT role, ROUND(AVG(monthly_income ), 0) as average_income FROM users GROUP BY role
+      ```
+    </details>
 
 > Now you’re no longer querying individuals—you’re reading patterns.
 
