@@ -305,7 +305,7 @@ they are learning to think in data.
       This is the final result:
 
       ```sql
-      SELECT 'Average Income', ROUND(AVG(monthly_income ), 0) FROM users
+      SELECT 'Average Income', ROUND(AVG(monthly_income), 0) FROM users
       ```
 
       More information about the `AVG() function` in [here](https://www.w3schools.com/sql/sql_avg.asp).\
@@ -329,10 +329,55 @@ they are learning to think in data.
 ## Level 4 — Analytical Thinking
 
 21. Show professions with more than 10 people.
+    <details>
+      <summary>Was I close?</summary>
+
+      ```sql
+      SELECT profession, COUNT(*) AS profession_count FROM users GROUP BY profession HAVING count(*) > 10
+      ```
+
+      More information about the `HAVING` in [here](https://www.w3schools.com/sql/sql_having.asp).
+    </details>
 22. Show the city with the most users.
+    <details>
+      <summary>Answer unlocked</summary>
+
+      ```sql
+      SELECT city, COUNT(*) AS city_count FROM users GROUP BY city ORDER BY city_count DESC LIMIT 1
+      ```
+
+      More information about the `ORDER BY keyword` in [here](https://www.w3schools.com/sql/sql_orderby.asp).\
+      More information about the `LIMIT` in [here](https://www.w3schools.com/mysql/mysql_limit.asp).
+    </details>
 23. Compare the number of minors vs adults.
+    <details>
+      <summary>No cheating</summary>
+
+      ```sql
+      SELECT
+          SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) > 17) AS adults,
+          SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 18) AS minors
+      FROM users
+      ```
+
+      More information about the `SUM() function` in [here](https://www.w3schools.com/sql/sql_sum.asp).
+    </details>
 24. Average income by city, ordered from highest to lowest.
+    <details>
+      <summary>Let’s find out</summary>
+
+      ```sql
+      SELECT city, ROUND(AVG(monthly_income )) AS income_city FROM users GROUP BY city ORDER BY income_city DESC
+      ```
+    </details>
 25. Show the top 5 people with the highest income.
+    <details>
+      <summary>Drumroll…</summary>
+
+      ```sql
+      SELECT first_name, monthly_income FROM `users` ORDER BY monthly_income DESC LIMIT 5
+      ```
+    </details>
 
 > Here you’re already using GROUP BY, ORDER BY, LIMIT, and HAVING.
 
