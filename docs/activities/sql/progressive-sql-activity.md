@@ -332,27 +332,50 @@ they are learning to think in data.
     <details>
       <summary>Was I close?</summary>
 
+      In this exercise, we bring together several concepts. First, we introduce a new SQL topic called `HAVING`.
+      
+      The `HAVING` clause works in a similar way to `WHERE`, but with an important difference:  
+      the `WHERE` clause cannot be used with aggregate functions, while `HAVING` can.
+      
+      Our goal is to display all user professions, count how many users belong to each profession, assign an alias to that count, group the results by profession, and finally filter the professions that have **more than 10 users**.
+      
+      With that in mind, here is the solution:
+
       ```sql
-      SELECT profession, COUNT(*) AS profession_count FROM users GROUP BY profession HAVING count(*) > 10
+      SELECT profession, COUNT(*) AS profession_count FROM users GROUP BY profession HAVING profession_count > 10
       ```
 
       More information about the `HAVING` in [here](https://www.w3schools.com/sql/sql_having.asp).
     </details>
 22. Show the city with the most users.
-    <details>
-      <summary>Answer unlocked</summary>
-
-      ```sql
-      SELECT city, COUNT(*) AS city_count FROM users GROUP BY city ORDER BY city_count DESC LIMIT 1
-      ```
-
-      More information about the `ORDER BY keyword` in [here](https://www.w3schools.com/sql/sql_orderby.asp).\
-      More information about the `LIMIT` in [here](https://www.w3schools.com/mysql/mysql_limit.asp).
-    </details>
+      <details>
+        <summary>Answer unlocked</summary>
+        
+        In this section the fun starts, because now we have to user some concepts that are really useful in the field.
+  
+        The first concept we are going to see is call the `ORDER BY` keyword. This keyword is made to order the elements in a specific way, it could be ascendance (`ASC`) or descendase (`DESC`), in this case we are going to user the `DESC`.
+  
+        Onother important tool is the `LIMIT`. This clause limits the results by just the amount of result that we specify, in this case we just need the first result.
+  
+        Taking all this in count, this is the solution:
+  
+        ```sql
+        SELECT city, COUNT(*) AS city_count FROM users GROUP BY city ORDER BY city_count DESC LIMIT 1
+        ```
+  
+        More information about the `ORDER BY keyword` in [here](https://www.w3schools.com/sql/sql_orderby.asp).\
+        More information about the `LIMIT` in [here](https://www.w3schools.com/mysql/mysql_limit.asp).
+      </details>
 23. Compare the number of minors vs adults.
     <details>
       <summary>No cheating</summary>
 
+      It's time to introduce y'all to a new amazing concept: The `SUM()` Function.\
+      The `SUM()` function is going to return the sum of a numeric column. If a boolean stament is inside the function, and it return `TRUE`, then it's going to sum `1`.\
+      If it returns `FALSE`, then it's going to sum `0`.
+
+      In this case it's going to look like this:
+  
       ```sql
       SELECT
           SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) > 17) AS adults,
@@ -366,6 +389,14 @@ they are learning to think in data.
     <details>
       <summary>Let’s find out</summary>
 
+      Another great exercise to practice multiple SQL concepts together.
+      
+      In this exercise, we first calculate the average `monthly_income` for each city.  
+      Then, we round that value and assign it an alias.  
+      Next, we group the results by city and finally order them by `monthly_income` in descending order.
+      
+      With all this in mind, here is the solution:
+
       ```sql
       SELECT city, ROUND(AVG(monthly_income )) AS income_city FROM users GROUP BY city ORDER BY income_city DESC
       ```
@@ -373,6 +404,13 @@ they are learning to think in data.
 25. Show the top 5 people with the highest income.
     <details>
       <summary>Drumroll…</summary>
+
+      If you’ve completed the previous exercises in order, this one should be extremely easy.
+      
+      First, we select the `first_name` and `monthly_income` columns.  
+      Then, we order the results by `monthly_income` in descending order and limit the output to the top 5 entries.
+      
+      With that in mind, here is the solution:
 
       ```sql
       SELECT first_name, monthly_income FROM `users` ORDER BY monthly_income DESC LIMIT 5
@@ -386,11 +424,59 @@ they are learning to think in data.
 
 ## Level 5 — Engineer Level
 
-26. Classify users as:
-    - "Minor"
-    - "Adult"
-    - "Senior"
+26. Classify users as "Minor", "Adult" and "Senior".
+    <details>
+      <summary>Math gods decide</summary>
+
+      ```sql
+      SELECT first_name, 
+             CASE 
+                 WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 18 THEN 'Minor'
+                 WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 18 AND TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 65 THEN 'Adult'
+                 ELSE 'Senior'
+             END AS age_group
+      FROM users
+      ```
+    </details>
 27. Show how many users fall into each of the classifications above.
+    <details>
+      <summary>Truth hurts</summary>
+
+      ```sql
+      SELECT 
+             SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 18) as 'Minor',
+             SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 18 AND TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 65) as 'Adult',
+             SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 65) as 'Senior'
+      FROM users
+      ```
+    </details>
 28. Income ranking by city.
+    <details>
+      <summary>Verify my genius</summary>
+
+      ```sql
+      SELECT city, SUM(monthly_income) AS income FROM users GROUP BY city ORDER BY income DESC
+      ```
+    </details>
 29. Profession with the highest average income.
+    <details>
+      <summary>Hope mode ON</summary>
+
+      ```sql
+      SELECT profession,
+          ROUND(AVG(monthly_income),0) AS income
+      FROM users
+      GROUP BY profession
+      ORDER BY income DESC
+      ```
+    </details>
 30. Show users whose income is above the overall average.
+    <details>
+      <summary>Final answer?</summary>
+
+      ```sql
+      SELECT first_name, monthly_income as income 
+      FROM users 
+      WHERE monthly_income > (SELECT AVG(monthly_income) FROM users)
+      ```
+    </details>
