@@ -240,10 +240,90 @@ Está aprendiendo a pensar en datos.
 # Nivel 3 — Introducción a análisis (Agregaciones)
 
 16. Contar usuarios por `role`.
+    <details>
+      <summary>Chequeo de realidad</summary>
+            
+      Para comenzar esta sección, necesitamos introducir algunos conceptos nuevos que nos ayudarán a resolver este reto.
+      
+      El primer concepto es la función `COUNT()`.  
+      La función `COUNT()` se utiliza para contar el número de filas que coinciden con una condición específica.
+      
+      El segundo concepto es la sentencia `GROUP BY`.  
+      Esta agrupa filas que tienen los mismos valores en filas de resumen.
+      
+      El último concepto es la palabra clave `AS`, que se utiliza para renombrar una columna o tabla usando un alias.
+      
+      Suficiente teoría — pongamos las manos en el teclado.
+      
+      Primero, necesitamos hacer un `SELECT` de los datos que queremos analizar. En este caso, seleccionamos la columna `role` y el número de veces que aparece cada rol usando `COUNT(role)`.  
+      En lugar de mostrar el nombre de columna por defecto `COUNT(role)`, usamos la palabra clave `AS` para darle un alias más legible.
+      
+      Luego, especificamos la tabla donde están almacenados los datos y finalmente usamos `GROUP BY` para agrupar los resultados por rol.
+
+      ```sql
+      SELECT role, COUNT(role) AS Counting FROM users GROUP BY role 
+      ```
+
+      Más información sobre la función `COUNT()` [aquí](https://www.w3schools.com/sql/sql_count.asp).\
+      Más información sobre la sentencia `GROUP BY` [aquí](https://www.w3schools.com/sql/sql_groupby.asp#gsc.tab=0).\
+      Más información sobre la palabra clave `AS` [aquí](https://www.w3schools.com/sql/sql_ref_as.asp).
+    </details>
 17. Contar usuarios por `document_type`.
+    <details>
+      <summary>No te rías</summary>
+            
+      Este ejercicio es muy similar al anterior. En este caso, usamos `document_type` como el campo de agrupación.
+
+      ```sql
+      SELECT document_type, COUNT(document_type) AS Counting FROM users GROUP BY document_type 
+      ```
+    </details>
 18. Contar cuántos usuarios están desempleados.
+    <details>
+      <summary>Sé amable</summary>
+            
+      En este caso tomamos `'Unemployed'` como un valor fijo y usamos `COUNT(*)` para contar todos los usuarios en la tabla `users`.\
+      Luego filtramos solo los usuarios `WHERE company IS NULL`, lo que significa que están desempleados.
+
+      ```sql
+      SELECT 'Unemployed', COUNT(*) AS Counting FROM users WHERE company IS NULL 
+      ```
+    </details>
 19. Calcular el promedio general de ingresos.
+    <details>
+      <summary>Haz clic con cuidado</summary>
+            
+      Para este ejercicio, necesitamos introducir un par de conceptos nuevos de SQL.
+      
+      El primero es la función `AVG()`.  
+      La función `AVG()` devuelve el valor promedio de una columna numérica.
+      
+      El segundo y último concepto de esta sección es la función `ROUND()`.  
+      La función `ROUND()` redondea un número a una cantidad específica de decimales.
+      
+      En este caso, queremos calcular el ingreso mensual promedio de todos los usuarios.  
+      Usamos la función `AVG()` para obtener el promedio y la función `ROUND()` para redondear el resultado a **0 decimales**.
+      
+      Este es el resultado final:
+
+      ```sql
+      SELECT 'Average Income', ROUND(AVG(monthly_income ), 0) FROM users
+      ```
+
+      Más información sobre la función `AVG()` [aquí](https://www.w3schools.com/sql/sql_avg.asp).\
+      Más información sobre la función `ROUND()` [aquí](https://www.w3schools.com/sql/func_sqlserver_round.asp).
+    </details>
 20. Calcular el promedio de ingresos por `role`.
+    <details>
+      <summary>La gran revelación</summary>
+            
+      Este ejercicio es muy similar al anterior, pero en este caso agrupamos los resultados usando `GROUP BY role`.
+
+      ```sql
+      SELECT role, ROUND(AVG(monthly_income ), 0) AS average_income FROM users GROUP BY role
+      ```
+    </details>
+
 
 > Ahora ya no estás consultando individuos, estás leyendo patrones.
 
