@@ -424,9 +424,17 @@ they are learning to think in data.
 
 ## Level 5 — Engineer Level
 
-26. Classify users as "Minor", "Adult" and "Senior".
+26. Classify users as "Minor", "Adult" or "Senior".
     <details>
       <summary>Math gods decide</summary>
+
+      Now it's time to explore a new conditional call the `CASE` expression. 7
+
+      The `CASE` expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the `ELSE` clause.
+      
+      If there is no `ELSE` part and no conditions are true, it returns `NULL`.
+
+      With that in mind, let's continue:
 
       ```sql
       SELECT first_name, 
@@ -437,10 +445,17 @@ they are learning to think in data.
              END AS age_group
       FROM users
       ```
+      More information about the `CASE expression` in [here](https://www.w3schools.com/sql/sql_case.asp).
     </details>
 27. Show how many users fall into each of the classifications above.
     <details>
       <summary>Truth hurts</summary>
+
+      Let's group a few concepts to get this exercise done.
+
+      First, we need to calculate the total number of users that fall into a specific age range: `'Minor'`, `'Adult'`, or `'Senior'`.
+      
+      If a user matches a given category, we add `1` to that group using the `SUM()` function, and then display the final totals for each category.
 
       ```sql
       SELECT 
@@ -454,6 +469,11 @@ they are learning to think in data.
     <details>
       <summary>Verify my genius</summary>
 
+      In this case we have to `SUM` the `monthly_income` of the table `users` and `GROUP BY city` the result.\
+      Then we `ORDER BY income` in a descendance order to create the ranking.
+
+      This is the result:
+
       ```sql
       SELECT city, SUM(monthly_income) AS income FROM users GROUP BY city ORDER BY income DESC
       ```
@@ -462,21 +482,34 @@ they are learning to think in data.
     <details>
       <summary>Hope mode ON</summary>
 
+      Let's get out hands dirty.
+
+      First we have to create an `AVG` of the `monthly_income` of all users and `GROUP BY profession` the result.\
+      Then we `ORDER BY income` to get the information in a descendance order.\
+      And finally `LIMIT` the result to `1` to get the highest average income:
+
       ```sql
       SELECT profession,
           ROUND(AVG(monthly_income),0) AS income
       FROM users
       GROUP BY profession
       ORDER BY income DESC
+      LIMIT 1
       ```
     </details>
 30. Show users whose income is above the overall average.
     <details>
       <summary>Final answer?</summary>
 
+      And the last exercise, I imagine how tired you could be, but no problem, let's do it.
+
+      First of all we need to gather the information that we need, in this case we need the `first_name` and the `monthly_income` from the users `WHERE` its `income` is higher that the `AVG monthly_income`.
+
+      With that, let's finish with:
+
       ```sql
       SELECT first_name, monthly_income as income 
       FROM users 
-      WHERE monthly_income > (SELECT AVG(monthly_income) FROM users)
+      WHERE income > (SELECT AVG(monthly_income) FROM users)
       ```
     </details>

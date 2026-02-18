@@ -427,12 +427,92 @@ Está aprendiendo a pensar en datos.
 
 # Nivel 5 — Nivel Ingeniero
 
-26. Clasificar usuarios como:
-    - "Menor"
-    - "Adulto"
-    - "Adulto mayor"
+26. Clasificar usuarios como "Menor", "Adulto" o "Adulto mayor".
+    <details>
+      <summary>Los dioses de las matemáticas deciden</summary>
 
-27. Mostrar cuántos usuarios hay en cada clasificación anterior.
+      Ahora es momento de explorar una nueva condición llamada la expresión `CASE`.
+
+      La expresión `CASE` evalúa condiciones y devuelve un valor cuando se cumple la primera condición (similar a una estructura if-then-else). Una vez que una condición es verdadera, deja de evaluarse y retorna el resultado. Si ninguna condición se cumple, devuelve el valor definido en la cláusula `ELSE`.
+      
+      Si no existe una parte `ELSE` y ninguna condición se cumple, el resultado será `NULL`.
+
+      Con esto en mente, continuemos:
+
+      ```sql
+      SELECT first_name, 
+             CASE 
+                 WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 18 THEN 'Minor'
+                 WHEN TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 18 AND TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 65 THEN 'Adult'
+                 ELSE 'Senior'
+             END AS age_group
+      FROM users
+      ```
+      Más información sobre la expresión `CASE` [aquí](https://www.w3schools.com/sql/sql_case.asp).
+    </details>
+27. Mostrar cuántos usuarios hay en cada una de las clasificaciones anteriores.
+    <details>
+      <summary>La verdad duele</summary>
+
+      Vamos a agrupar varios conceptos para resolver este ejercicio.
+
+      Primero, necesitamos calcular el número total de usuarios que caen dentro de un rango de edad específico: `'Minor'`, `'Adult'` o `'Senior'`.
+      
+      Si un usuario coincide con una categoría determinada, sumamos `1` a ese grupo usando la función `SUM()`, y luego mostramos los totales finales para cada categoría.
+
+      ```sql
+      SELECT 
+             SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 18) AS 'Minor',
+             SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 18 AND TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) < 65) AS 'Adult',
+             SUM(TIMESTAMPDIFF(YEAR, birth_date, CURDATE()) >= 65) AS 'Senior'
+      FROM users
+      ```
+    </details>
 28. Ranking de ingresos por ciudad.
+    <details>
+      <summary>Verifica mi genialidad</summary>
+
+      En este caso debemos hacer un `SUM` del `monthly_income` de la tabla `users` y agrupar el resultado usando `GROUP BY city`.\
+      Luego ordenamos con `ORDER BY income` en orden descendente para crear el ranking.
+
+      Este es el resultado:
+
+      ```sql
+      SELECT city, SUM(monthly_income) AS income FROM users GROUP BY city ORDER BY income DESC
+      ```
+    </details>
 29. Profesión con mayor ingreso promedio.
+    <details>
+      <summary>Modo esperanza ACTIVADO</summary>
+
+      Manos a la obra.
+
+      Primero debemos calcular el `AVG` del `monthly_income` de todos los usuarios y agrupar el resultado por `profession`.\
+      Luego ordenamos con `ORDER BY income` en orden descendente.\
+      Finalmente, limitamos el resultado a `1` para obtener el ingreso promedio más alto:
+
+      ```sql
+      SELECT profession,
+          ROUND(AVG(monthly_income),0) AS income
+      FROM users
+      GROUP BY profession
+      ORDER BY income DESC
+      LIMIT 1
+      ```
+    </details>
 30. Mostrar usuarios cuyo ingreso esté por encima del promedio general.
+    <details>
+      <summary>¿Respuesta final?</summary>
+
+      Y llegamos al último ejercicio. Me imagino que ya puedes estar cansado, pero no hay problema, vamos a terminarlo.
+
+      Primero necesitamos obtener la información necesaria. En este caso, requerimos `first_name` y `monthly_income` de los usuarios `WHERE` su ingreso sea mayor que el `AVG` del `monthly_income`.
+
+      Con eso, terminamos con:
+
+      ```sql
+      SELECT first_name, monthly_income AS income 
+      FROM users 
+      WHERE income > (SELECT AVG(monthly_income) FROM users)
+      ```
+    </details>
