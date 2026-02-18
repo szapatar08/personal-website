@@ -25,7 +25,7 @@ Para más información sobre **ERD**, por favor revisa estos videos:
 2. Analiza los datos e identifica redundancias y dependencias.
 3. Recrea y normaliza el esquema de la base de datos usando **MySQL Workbench** y aplica conceptos de **ERD**.
 4. Aplica las reglas de normalización correspondientes (por ejemplo, 1NF, 2NF, 3NF).
-5. Una vez finalizado, compara tu esquema normalizado con la solución proporcionada para verificar su corrección.
+5. Una vez finalizado, compara tu esquema normalizado mi solucion (Todas la soluciones pueden variar, solo asegurate que siga la misma logica).
 
 ### Resultado Esperado
 Al completar esta actividad, podrás:
@@ -42,4 +42,14 @@ Recuerda **normalizar** la base de datos aplicando conceptos de **ERD**.
     <summary>Verificar si estoy en lo correcto</summary>
 
     ![Imagen de Primera Normalización SQL](../../assets/sql-normalization/normalization-1.png)  
+</details>
+
+## Nivel 2
+Por favor descarga el **archivo de Excel** haciendo clic [aquí](../../assets/sql-normalization/table-2.xlsx).\
+Recuerda **normalizar** la base de datos aplicando conceptos de **ERD**.
+
+<details>
+    <summary>¿Soy un genio?</summary>
+
+    ![Imagen de Segunda Normalización SQL](../../assets/sql-normalization/normalization-2.png)  
 </details>

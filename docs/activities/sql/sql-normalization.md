@@ -23,7 +23,7 @@ For more information about **ERD** please click in this videos: [Entity Relation
 2. Analyze the data and identify redundancies and dependencies.
 3. Recreate and normalize the database schema using **MySQL Workbench** and apply **ERD** concepts.
 4. Apply the appropriate normalization rules (e.g., 1NF, 2NF, 3NF).
-5. Once finished, compare your normalized schema with the provided solution to verify correctness.
+5. Once finished, compare your normalized schema with mine (All the answers may differ, just make sure it follows the same logic).
 
 ### Expected Outcome
 By completing this activity, you will be able to:
@@ -40,4 +40,14 @@ Remember **normalize** the database applying **ERD** concepts.
     <summary>Check if I’m right</summary>
 
     ![SQL First Normalization Image](../../assets/sql-normalization/normalization-1.png)  
+</details>
+
+## Level 2
+Please download the **Excel file** by clicking [here](../../assets/sql-normalization/table-2.xlsx).\
+Remember **normalize** the database applying **ERD** concepts.
+
+<details>
+    <summary>Am I genious?</summary>
+
+    ![SQL Second Normalization Image](../../assets/sql-normalization/normalization-2.png)  
 </details>
