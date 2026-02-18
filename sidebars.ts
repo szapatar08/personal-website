@@ -27,7 +27,10 @@ const sidebars: SidebarsConfig = {
         keywords: ["SQL", "Structured Query Language", "data", "databases"],
       },
       label: "SQL",
-      items: ["activities/sql/progressive-sql-activity"],
+      items: [
+        "activities/sql/progressive-sql-activity",
+        "activities/sql/sql-normalization",
+      ],
     },
   ],
 };
