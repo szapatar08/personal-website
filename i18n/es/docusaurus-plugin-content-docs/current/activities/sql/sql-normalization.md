@@ -63,3 +63,13 @@ Recuerda **normalizar** la base de datos aplicando conceptos de **ERD**.
     
     ![Imagen de Tercera Normalization SQL](../../assets/sql-normalization/normalization-3.png)
 </details>
+
+## Nivel 4
+Por favor descarga el **archivo de Excel** haciendo clic [aquí](../../assets/sql-normalization/table-4.xlsx).\
+Recuerda **normalizar** la base de datos aplicando conceptos de **ERD**.
+
+<details>
+    <summary>¿Lo hice bien?</summary>
+    
+    ![Imagen de Tercera Normalization SQL](../../assets/sql-normalization/normalization-4.png)
+</details>

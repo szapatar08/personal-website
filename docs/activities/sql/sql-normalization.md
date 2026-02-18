@@ -61,3 +61,13 @@ Remember **normalize** the database applying **ERD** concepts.
 
     ![SQL Third Normalization Image](../../assets/sql-normalization/normalization-3.png)  
 </details>
+
+## Level 4
+Please download the **Excel file** by clicking [here](../../assets/sql-normalization/table-4.xlsx).\
+Remember **normalize** the database applying **ERD** concepts.
+
+<details>
+    <summary>Did I nail it?</summary>
+
+    ![SQL Third Normalization Image](../../assets/sql-normalization/normalization-4.png)  
+</details>
