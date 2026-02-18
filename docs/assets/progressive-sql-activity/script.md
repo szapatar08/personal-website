@@ -1,21 +1,21 @@
-# Download and set up the SQL database
-- You can find the activity here: [Go to the activity](../../activities/sql/progressive-sql-activity)
-- If you don’t know how to create a database using MySQL, you can watch this video: [How to create a database in MySQL](https://www.youtube.com/watch?v=wgRwITQHszU)
-- This is the file you need to download to complete the activity: [Download the SQL file](./users.sql)
+# Descargar y configurar la base de datos SQL
+- Puedes encontrar la actividad aquí: [Ir a la actividad](../../activities/sql/progressive-sql-activity)
+- Si no sabes cómo crear una base de datos usando MySQL, puedes ver este video: [Cómo crear una base de datos en MySQL](https://www.youtube.com/watch?v=wgRwITQHszU)
+- Este es el archivo que necesitas descargar para completar la actividad: [Descargar el archivo SQL](./users.sql)
 
-After downloading the file, open your favorite DBMS and load the SQL file. Below is an example using DBeaver:
+Después de descargar el archivo, abre tu gestor de bases de datos (DBMS) favorito y carga el archivo SQL. A continuación se muestra un ejemplo usando DBeaver:
 
 ![photo-1.png](./photo-1.png)
 
-Once the file is opened, you’ll see all the SQL code that needs to be executed. To keep everything organized, I recommend collapsing the sections.
+Una vez que el archivo esté abierto, verás todo el código SQL que debe ejecutarse. Para mantener todo organizado, recomiendo colapsar las secciones.
 
-Before executing the code, make sure you:
-1. Select your server
-2. Select the target database
+Antes de ejecutar el código, asegúrate de:
+1. Seleccionar tu servidor
+2. Seleccionar la base de datos de destino
 
-Then execute the script:
+Luego ejecuta el script:
 
 ![video-1.gif](./video-1.gif)
 ![video-2.gif](./video-2.gif)
 
-Now have everything to start.
+Ahora ya tienes todo listo para comenzar.
