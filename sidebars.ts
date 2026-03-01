@@ -30,6 +30,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "activities/sql/progressive-sql-activity",
         "activities/sql/sql-normalization",
+        "activities/sql/db-express-activity",
       ],
     },
   ],
