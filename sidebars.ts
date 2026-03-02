@@ -34,6 +34,19 @@ const sidebars: SidebarsConfig = {
         "activities/sql/sql-views",
       ],
     },
+    {
+      type: "category",
+      link: {
+        type: "generated-index",
+        title: "MongoDB Practice Activities",
+        description:
+          "MongoDB is a source-available, cross-platform, document-oriented database program. Classified as a NoSQL database product, MongoDB uses JSON-like documents (called BSON) with optional schemas.",
+        slug: "/category/activities-mongodb",
+        keywords: ["Mongo", "MongoDB", "NoSQL", "databases"],
+      },
+      label: "MongoDB",
+      items: ["activities/mongodb/queries-activity-mongodb"],
+    },
   ],
 };
 export default sidebars;
